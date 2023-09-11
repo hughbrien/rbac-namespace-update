@@ -7,9 +7,18 @@ from watchdog.events import FileSystemEventHandler
 def handle_namespace_event(event):
     if event['object'].status.phase == 'Active':
         print(f"Namespace created: {event['object'].metadata.name}")
+        add_namespace_to_policy(event['object'].metadata.name)
     elif event['object'].status.phase == 'Terminating':
-        print(f"Namespace deleted: {event['object'].metadata.name}")
+        print(f"Namespace deleted:  {event['object'].metadata.name}")
 
+def add_namespace_to_policy(namespace ):
+    print(f"Calling Komodor API. Adding Namespace  {namespace} to Polcy")
+    return
+
+def delete_namespace_from_policy(namespace):
+    print(f"Calling Komodor API. Deleting Namespace {namespace} from Policy ")
+    return
+    
 class NamespaceHandler(FileSystemEventHandler):
     def on_created(self, event):
         handle_namespace_event(event)

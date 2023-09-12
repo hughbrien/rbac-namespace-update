@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rbac-namespace-update
+  annotations:
+    app.komodor.com/service.link.github: https://github.com/hughbrien/rbac-namespace-update
+    app.komodor.com/deploy.link.github: https://github.com/hughbrien/rbac-namespace-update
+    app.komodor.com/deploy.link.github-latestchange: https://github.com/hughbrien/rbac-namespace-update/commit/7ae4896a4c8f2a60d5c5c3ad59ae3cef17d221b2
+    app.komodor.com/tracked_files: |
+      *.yaml
+    app.komodor.com/app: https://github.com/hughbrien/rbac-namespace-update
+    app.komodor.com/app.ref: 7ae4896a4c8f2a60d5c5c3ad59ae3cef17d221b2
+
+  labels:
+    cluster: k3s-ubuntu-hpb-cluster
+    branch: main
+    author: hughbrien
+spec:
+  selector:
+    matchLabels:
+      app: rbac-namespace-update
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rbac-namespace-update
+        branch: main
+        version: 0.0.2
+    spec:
+      containers:
+      - name: rbac-namespace-update
+        image: docker.io/hughbrien/rbac-namespace-update:0.0.2
+        imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+        livenessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 1
+          exec:
+            command:
+              - ls
+              - /tmp
+        # Install Readiness Probes
+        readinessProbe:
+          exec:
+            command:
+              - ls
+              - /tmp
+          initialDelaySeconds: 5
+          periodSeconds: 5

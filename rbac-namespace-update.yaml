@@ -9,7 +9,7 @@ metadata:
     app.komodor.com/tracked_files: |
       *.yaml
     app.komodor.com/app: https://github.com/hughbrien/rbac-namespace-update
-    app.komodor.com/app.ref: 7ae4896a4c8f2a60d5c5c3ad59ae3cef17d221b2
+    app.komodor.com/app.ref: 9c0e584dd435bd11329a34ab328f78712440533b
 
   labels:
     cluster: k3s-ubuntu-hpb-cluster

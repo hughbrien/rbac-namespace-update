@@ -48,24 +48,28 @@ class NamespaceHandler(FileSystemEventHandler):
 
 def main():
     # Load Kubernetes configuration (use kubeconfig file or in-cluster config)
+    print("Loading up kubeconfig")
     config.load_kube_config(config_file="./k3s-context.yaml")
 
     # Create a Kubernetes client
+    print("Loading up kubeconfig")
     v1 = client.CoreV1Api()
 
     # Watch for Namespace events
     w = watch.Watch()
     for event in w.stream(v1.list_namespace):
-        print(event)
+        #print(event)
         handle_namespace_event(event)
 
 if __name__ == "__main__":
     # Watch for changes in the /var/run/secrets/kubernetes.io/serviceaccount/ namespace folder
+    print("Creating and Starting Observer")
     observer = Observer()
     observer.schedule(NamespaceHandler(), "./serviceaccount")
     observer.start()
 
     try:
+        print("Calling main()")
         main()
     except KeyboardInterrupt:
         observer.stop()

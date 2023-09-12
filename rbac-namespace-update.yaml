@@ -5,11 +5,11 @@ metadata:
   annotations:
     app.komodor.com/service.link.github: https://github.com/hughbrien/rbac-namespace-update
     app.komodor.com/deploy.link.github: https://github.com/hughbrien/rbac-namespace-update
-    app.komodor.com/deploy.link.github-latestchange: https://github.com/hughbrien/rbac-namespace-update/commit/db0ab575e691f49941314a4f9cc992017cf70364
+    app.komodor.com/deploy.link.github-latestchange: https://github.com/hughbrien/rbac-namespace-update/commit/85b170bd8e771c98f80b07fef0dd61c73a843ac3
     app.komodor.com/tracked_files: |
       *.yaml
     app.komodor.com/app: https://github.com/hughbrien/rbac-namespace-update
-    app.komodor.com/app.ref: db0ab575e691f49941314a4f9cc992017cf70364
+    app.komodor.com/app.ref: 85b170bd8e771c98f80b07fef0dd61c73a843ac3
 
   labels:
     cluster: k3s-ubuntu-hpb-cluster

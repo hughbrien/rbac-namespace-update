@@ -25,7 +25,7 @@ def get_rbac_polcies():
 
     posting = requests.get("https://api.komodor.com/mgmt/v1/rbac/policies",
                             headers={"Content-Type":"application/json",
-                                     "x-api-key":"69b97c67-fa11-4125-8606-7ccc62d9bd53"})
+                                     "x-api-key":""})
     print(posting)
     status_code = str(posting.ok)
     for item in posting.json():

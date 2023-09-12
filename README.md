@@ -3,4 +3,11 @@ Update an RBAC policy with a namespace value based upon the Kubernetes namespace
 
 ### Configuration
 
-Need a Kubernetes Configuration File/Context 
+Need to include Kubernetes Configuration File/Context for Authentication
+
+
+```
+main.py is the Listener code for Additions and Deletions of Namespaces
+
+client.py is testing the Komodor RBAC API calls.
+```
